@@ -1,15 +1,39 @@
 
-// // 监听页面值是否有变化
-$('.s_ipt').change(function () {
 
-    var ta = $(this).val();
+var autoCheckVal = null;
 
-    if (ta =='test'){
-        $(this).val('弹出消息通知!');
-        notifyMe();
+
+setInter();
+
+// 自动执行定时器
+function setInter() {
+
+    // 设置定时任务.定时查询页面
+    autoCheckVal = setInterval("checkVal()",1000);//1000为1秒钟
+
+}
+
+
+function checkVal(){
+
+    var auditCount = $('#afsWaitAuditListTab').find('.badge').text();
+
+    // 检测 结果是否大于0
+
+    // 抛出通知消息
+
+    if (auditCount == '0'){
+        return false;
     }
 
-});
+    notifyMe();
+
+    // 取消通知
+    clearInterval(autoCheckVal);
+
+    // 5分钟内不再提示
+    setTimeout("setInter()", 1000 * 5 * 60);
+}
 
 
 // 用户授权
@@ -38,7 +62,7 @@ function notifyMe() {
         });
 
         notification.onclick = function () {
-            window.open("http://www.yuanxu.top");
+            window.open("https://vcp.jd.com/sub_afs/afsList/initTotalListPage");
         };
 
     }

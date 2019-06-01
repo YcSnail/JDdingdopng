@@ -2,17 +2,17 @@
   "name": "jd pang",
   "version": "1.2",
   "manifest_version": 2,
-  "description": "自动输入文字",
+  "description": "自动监听是否有服务单",
   "content_scripts": [{
-    "matches": ["https://www.baidu.com/*"],
-    "js": ["js/jquery-3.2.1.min.js","js/baidu.js"],
+    "matches": ["https://vcp.jd.com/sub_afs/afsList/initTotalListPage/*"],
+    "js": ["js/jquery-3.2.1.min.js","js/jd.js"],
     "run_at": "document_end"
   }],
 
   "permissions": ["storage","notifications"],
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "pang.jpg",
     "default_popup": "popup.html"
   }
 }
